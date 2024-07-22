@@ -560,6 +560,22 @@ public class Main {
         return step;
     }
 
+    //2520. Count the Digits That Divide a Number
+    public int countDigits(int num) {
+        int number = num;
+        int res = 0;
+        while(num>0){
+            int val = num % 10;
+            if(number % val == 0 ){
+                res++;
+            }
+            num = num/10;
+        }
+        return res;
+    }
+
+
+
 
 
 
