@@ -574,10 +574,24 @@ public class Main {
         return res;
     }
 
+    //2535. Difference Between Element Sum and Digit Sum of an Array
+    public int differenceOfSum(int[] nums) {
+        int sum=0, digitsSum=0;
+        for(Integer num : nums){
+            sum+=num;
+            digitsSum+=summa(num);
+        }
+        return Math.abs(digitsSum-sum);
+    }
 
-
-
-
+    public static Integer summa(int number){
+        int sum = 0;
+        while(number>0){
+            sum+=number%10;
+            number = number/10;
+        }
+        return sum;
+    }
 
 
 }
