@@ -593,5 +593,25 @@ public class Main {
         return sum;
     }
 
+    //2485. Find the Pivot Integer
+    public int pivotInteger(int n) {
+        for(int i=1; i<=n; i++){
+            int s1=0,s2=0;
+            for(int j=1; j<=i; j++){
+                s1+=j;
+            }
+            for(int k=i; k<=n; k++){
+                s2+=k;
+            }
+            if(s1==s2){
+                return i;
+            }
+        }
+        return -1;
+
+    }
+
+
+
 
 }
