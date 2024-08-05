@@ -101,6 +101,30 @@ public class Medium {
         return isPalind;
     }
 
+    //7. Reverse Integer
+    public int reverse(int x) {
+        if(x>0){
+            return resNum(x);
+        }else{
+            int res = x*(-1);
+            return resNum(res)*(-1);
+        }
+
+    }
+    public int resNum(int x){
+        long res = 0;
+        while(x>0){
+            res=res*10+x%10;
+            x=x/10;
+            if(res>Integer.MAX_VALUE){
+                res=0;
+                break;
+            }
+        }
+        return (int)res;
+    }
+
+
 
 
 }
