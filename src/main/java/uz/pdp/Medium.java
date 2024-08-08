@@ -1,5 +1,6 @@
 package uz.pdp;
 
+import java.math.BigInteger;
 import java.util.Arrays;
 public class Medium {
 
@@ -124,6 +125,12 @@ public class Medium {
         return (int)res;
     }
 
+    //43. Multiply Strings
+    public String multiply(String num1, String num2) {
+        BigInteger bigInt1 = new BigInteger(num1);
+        BigInteger bigInt2 = new BigInteger(num2);
+        return ""+bigInt1.multiply(bigInt2);
+    }
 
 
 
