@@ -1,5 +1,8 @@
 package uz.pdp;
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -185,4 +188,287 @@ public class Main {
     public int mySqrt(int x) {
         return (int)Math.sqrt(x);
     }
+
+    //70. Climbing Stairs
+    public int climbStairs(int n) {
+        if (n == 0 || n == 1) {
+            return 1;
+        }
+        int prev = 1, curr = 1;
+        for (int i = 2; i <= n; i++) {
+            int temp = curr;
+            curr = prev + curr;
+            prev = temp;
+        }
+        return curr;
+    }
+
+    //88. Merge Sorted Array
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        for(int i=0; i<nums2.length; i++){
+            nums1[m]=nums2[i];
+            m++;
+        }
+        Arrays.sort(nums1);
+    }
+    //1920. Build Array from Permutation
+    public int[] buildArray(int[] nums) {
+        int ans[] = new int[nums.length];
+        for(int i=0; i<nums.length; i++){
+            ans[i]=nums[nums[i]];
+        }
+        return ans;
+    }
+
+    //1929. Concatenation of Array
+    public int[] getConcatenation(int[] nums) {
+        int[] ans = new int[nums.length+nums.length];
+        System.arraycopy(nums,0,ans,0,nums.length);
+        System.arraycopy(nums,0,ans,nums.length,nums.length);
+        return ans;
+
+    }
+
+   //2011. Final Value of Variable After Performing Operations
+    public int finalValueAfterOperations(String[] operations) {
+        int x = 0;
+        for(int i=0;i<operations.length;i++){
+            if(operations[i].equals("++X") ||operations[i].equals("X++") ){
+                x++;
+            }else{
+                x--;
+            }
+        }
+        return x;
+    }
+
+
+    //1512. Number of Good Pairs
+    public int numIdenticalPairs(int[] nums) {
+        int sout=0;
+        for(int i=0; i<nums.length;i++){
+            for(int j=0; j<nums.length; j++){
+                if(nums[i]==nums[j] && i<j){
+                    sout++;
+                }
+            }
+        }
+        return sout;
+
+    }
+
+    //2942. Find Words Containing Character
+    public List<Integer> findWordsContaining(String[] words, char x) {
+        List<Integer> res = new ArrayList<>();
+        for(int i=0;i<words.length;i++){
+            if(words[i].indexOf(x) != -1){
+                res.add(i);
+            }
+        }
+        return res;
+    }
+
+    //1470. Shuffle the Array
+    public int[] shuffle(int[] nums, int n) {
+        int[] ans=new int[n*2];
+        int a=0;
+        for(int i=0; i<n*2; i+=2){
+            ans[i]=nums[a];
+            a++;
+        }
+        for(int i=1; i<n*2; i+=2){
+            ans[i]=nums[a];
+            a++;
+        }
+        return ans;
+
+    }
+
+    //1672. Richest Customer Wealth
+    public int maximumWealth(int[][] accounts) {
+        int max=0,a=0;
+        for(int i=0; i<accounts.length; i++){
+            a=0;
+            for(int j=0;j<accounts[i].length;j++){
+                a+=accounts[i][j];
+            }
+            if(max<a){
+                max=a;
+            }
+        }
+        return max;
+    }
+
+    //2373. Largest Local Values in a Matrix
+    public int[][] largestLocal(int[][] grid) {
+        int n = grid.length;
+
+        int maxLocal[][] = new int[n-2][n-2];
+
+        for(int i = 0; i < n - 2; i++) {
+            for(int j = 0; j < n - 2; j++) {
+                maxLocal[i][j] = findMax(grid, i, j);
+            }
+        }
+        return maxLocal;
+    }
+
+    private int findMax(int grid[][], int x, int y) {
+        int maxEle = 0;
+        for(int i = x; i < x + 3; i++) {
+            for(int j = y; j < y + 3; j++) {
+                maxEle = Math.max(maxEle, grid[i][j]);
+            }
+        }
+        return maxEle;
+    }
+
+    //1863. Sum of All Subset XOR Totals
+    public int subsetXORSum(int[] nums) {
+
+        return helper(nums, 0, 0);
+    }
+    public int helper(int nums[], int level, int currentXOR){
+
+        if(level == nums.length) return currentXOR;
+
+        int include = helper(nums, level + 1, currentXOR^nums[level]);
+
+        int exclude = helper(nums, level + 1, currentXOR);
+
+        return include + exclude;
+    }
+
+    //2798. Number of Employees Who Met the Target
+    public int numberOfEmployeesWhoMetTarget(int[] hours, int target) {
+        int sum=0;
+        for(int i=0;i<hours.length;i++){
+            if(target<=hours[i]){
+                sum++;
+            }
+        }
+        return sum;
+    }
+
+    //1431. Kids With the Greatest Number of Candies
+    public List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {
+        int max=0;
+        for(int kid:candies){
+            max=Math.max(max,kid);
+        }
+        List<Boolean> res = new ArrayList<>();
+        for(int i=0;i<candies.length; i++){
+            res.add(max <= extraCandies+candies[i]);
+        }
+        return res;
+    }
+
+    //2824. Count Pairs Whose Sum is Less than Target
+    public int countPairs(List<Integer> nums, int target) {
+        int result=0;
+        for(int i=0; i<nums.size(); i++){
+            for(int j=i+1; j<nums.size(); j++){
+                if(nums.get(i)+nums.get(j)<target){
+                    result++;
+                }
+            }
+        }
+        return result;
+    }
+
+    //1365. How Many Numbers Are Smaller Than the Current Number
+    public int[] smallerNumbersThanCurrent(int[] nums) {
+        int num=0;
+        int[] res=new int[nums.length];
+        for(int i=0; i<nums.length; i++){
+            for(int j=0; j<nums.length; j++){
+                if(nums[i]>nums[j]){
+                    num++;
+                }
+            }
+            res[i]=num;
+            num=0;
+        }
+        return res;
+    }
+
+    //2574. Left and Right Sum Differences
+    public int[] leftRightDifference(int[] nums) {
+        int leftSum=0,rightSum=0;
+        int[] res = new int[nums.length];
+
+        for(int i=0; i<nums.length; i++){
+            for(int l=0; l<i; l++){
+                leftSum=leftSum+nums[l];
+            }
+            for(int r=i+1; r<nums.length; r++){
+                rightSum=rightSum+nums[r];
+            }
+            res[i]=Math.abs(leftSum-rightSum);
+            leftSum=0;
+            rightSum=0;
+        }
+        return res;
+    }
+
+    //1480. Running Sum of 1d Array
+    public int[] runningSum(int[] nums) {
+
+        for(int i = 1; i<nums.length; i++) {
+            nums[i] = nums[i] + nums[i-1];
+        }
+        return nums;
+    }
+
+    //3162. Find the Number of Good Pairs I
+    public int numberOfPairs(int[] nums1, int[] nums2, int k) {
+        int ans=0;
+        for(int i=0;i<nums1.length;i++){
+            if(nums1[i] % k != 0)
+                continue;
+            for(int j=0;j<nums2.length;j++){
+                if(nums1[i] % (nums2[j]*k)==0){
+                    ans++;
+                }
+            }
+        }
+        return ans;
+    }
+
+    //2114. Maximum Number of Words Found in Sentences
+    public int mostWordsFound(String[] sentences) {
+        int res = 0;
+        int max = 0;
+        for(int i=0; i<sentences.length; i++){
+            res = sentences[i].trim().split("\\s+").length;
+            if(max<res){
+                max=res;
+            }
+        }
+        return max;
+    }
+
+    //3065. Minimum Operations to Exceed Threshold Value I
+    public int minOperations(int[] nums, int k) {
+        int res = 0;
+        for(int i=0; i<nums.length; i++){
+            if(nums[i]<k){
+                res++;
+            }
+        }
+        return res;
+
+    }
+
+    //2974. Minimum Number Game
+    public int[] numberGame(int[] nums) {
+        Arrays.sort(nums);
+        int[] arr = new int[nums.length];
+        for(int i=0; i<nums.length-1; i+=2){
+            arr[i]=nums[i+1];
+            arr[i+1]=nums[i];
+        }
+        return arr;
+    }
+
 }
