@@ -648,6 +648,19 @@ public class Main {
         }else{return -1;}
     }
 
+    //231. Power of Two
+    public boolean isPowerOfTwo(int n) {
+        double d = n;
+        while (d>1){
+            d=d/2;
+        }
+        if (d==1){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
 
 
 
