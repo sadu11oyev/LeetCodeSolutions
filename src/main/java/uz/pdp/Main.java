@@ -471,4 +471,30 @@ public class Main {
         return arr;
     }
 
+    //2769. Find the Maximum Achievable Number
+    public int theMaximumAchievableX(int num, int t) {
+        return (num+2*t);
+    }
+
+    //3190. Find Minimum Operations to Make All Elements Divisible by Three
+    public int minimumOperations(int[] nums) {
+        int result = 0;
+        for(Integer num:nums){
+            if(num%3!=0){
+                result++;
+            }
+        }
+        return result;
+    }
+
+
+    //2469. Convert the Temperature
+    public double[] convertTemperature(double celsius) {
+        double kelvin = celsius + 273.15;
+        double fahrenheit = celsius*1.80 + 32.00;
+        double[] res= {kelvin, fahrenheit};
+        return res;
+    }
+
+
 }

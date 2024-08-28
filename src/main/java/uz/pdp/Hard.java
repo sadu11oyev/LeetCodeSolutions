@@ -16,7 +16,5 @@ public class Hard {
         }else {
             return array[medium];
         }
-
-
     }
 }
