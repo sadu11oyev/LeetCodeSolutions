@@ -65,6 +65,42 @@ public class Medium {
     }
 
 
+    //2396. Strictly Palindromic Number
+    public boolean isStrictlyPalindromic(int n) {
+        boolean isPal = false;
+        for(int i=2; i<=n-2; i++){
+            isPal = isPalindrom(n,i);
+            if(!isPal){
+                break;
+            }
+        }
+        return isPal;
+
+    }
+    public static boolean isPalindrom(int n, int sis){
+        boolean isPalind = false;
+        String str1 = "";
+        while(n>0){
+            if(n%sis==0){
+                str1+=""+0;
+            }else{
+                str1+=""+(n%sis);
+            }
+            n=n/sis;
+        }
+
+        int size = str1.length();
+        for(int i=0; i<=size/2; i++){
+            if(str1.charAt(i)==str1.charAt(size-i-1)){
+                isPalind = true;
+            }else{
+                isPalind = false;
+                break;
+            }
+        }
+        return isPalind;
+    }
+
 
 
 }

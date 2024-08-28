@@ -496,5 +496,33 @@ public class Main {
         return res;
     }
 
+    //2894. Divisible and Non-divisible Sums Difference
+    public int differenceOfSums(int n, int m) {
+        int num1=0, num2=0;
+        for(int i=1; i<=n; i++){
+            if(i%m!=0){
+                num1+=i;
+            }else{
+                num2+=i;
+            }
+        }
+        return num1-num2;
+    }
+
+    //2235. Add Two Integers
+    public int sum(int num1, int num2) {
+        return num1+num2;
+    }
+
+    //2413. Smallest Even Multiple
+    public int smallestEvenMultiple(int n) {
+        if(n%2==0){
+            return n;
+        }else{
+            return n*2;
+        }
+    }
+
+
 
 }
