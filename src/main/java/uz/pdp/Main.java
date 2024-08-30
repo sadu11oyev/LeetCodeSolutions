@@ -623,6 +623,20 @@ public class Main {
         return s1.toString().equals(s2.toString());
     }
 
+    //3232. Find if Digit Game Can Be Won
+    public boolean canAliceWin(int[] nums) {
+        int sum1=0,sum2=0;
+        for(Integer num: nums){
+            if(num<10){
+                sum1+=num;
+            }else{
+                sum2+=num;
+            }
+        }
+        return !((sum1-sum2)==0);
+    }
+
+
 
 
 
