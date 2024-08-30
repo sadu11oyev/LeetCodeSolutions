@@ -636,6 +636,18 @@ public class Main {
         return !((sum1-sum2)==0);
     }
 
+    //3099. Harshad Number
+    public int sumOfTheDigitsOfHarshadNumber(int x) {
+        int num=x,sum=0;
+        while(num>0){
+            sum+=num%10;
+            num=num/10;
+        }
+        if(x%sum==0){
+            return sum;
+        }else{return -1;}
+    }
+
 
 
 
