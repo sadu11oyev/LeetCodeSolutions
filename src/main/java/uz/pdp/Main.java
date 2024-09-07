@@ -711,6 +711,10 @@ public class Main {
         }
         return nums[nums.length-1]+1;
     }
+    //292. Игра Ним
+    public boolean canWinNim(int n) {
+        return(n%4!=0);
+    }
 
 
 
