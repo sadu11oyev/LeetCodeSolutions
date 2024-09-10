@@ -716,6 +716,11 @@ public class Main {
         return(n%4!=0);
     }
 
+    //326. Power of Three
+    public boolean isPowerOfThree(int n) {
+        return (Math.log10(n)/Math.log10(3))%1==0;
+    }
+
 
 
 
