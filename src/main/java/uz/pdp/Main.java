@@ -720,6 +720,11 @@ public class Main {
     public boolean isPowerOfThree(int n) {
         return (Math.log10(n)/Math.log10(3))%1==0;
     }
+    //342. Сила четырех
+    public boolean isPowerOfFour(int n) {
+        return (Math.log10(n)/Math.log10(4))%1==0;
+    }
+
 
 
 
