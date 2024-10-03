@@ -763,6 +763,20 @@ public class Main {
         return newArray;
     }
 
+    //119. Pascal's Triangle II
+    public static List<Integer> getRow(int numRows) {
+        List<Integer> array = new ArrayList<>();
+        array.add(1);
+        if (numRows==0){
+            return array;
+        }else {
+            for (int i = 0; i < numRows; i++) {
+                array=genNextArray(array);
+            }
+        }
+        return array;
+    }
+
 
 
 
