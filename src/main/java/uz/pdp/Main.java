@@ -2,6 +2,7 @@ package uz.pdp;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Main {
@@ -723,6 +724,43 @@ public class Main {
     //342. Сила четырех
     public boolean isPowerOfFour(int n) {
         return (Math.log10(n)/Math.log10(4))%1==0;
+    }
+
+    //118. Pascal's Triangle
+    public static List<List<Integer>> generate(int numRows) {
+
+        LinkedList<List<Integer>> outerList = new LinkedList<>();
+        List<Integer> innerList = new ArrayList<>();
+        innerList.add(1);
+        outerList.add(innerList);
+        if (numRows==0){
+            return outerList;
+        }
+        if(numRows==1){
+
+            return outerList;
+        }
+        else {
+            for (int i = 1; i <numRows ; i++) {
+                List<Integer> newArray = genNextArray(outerList.getLast());
+                outerList.add(newArray);
+            }
+
+        }
+        return outerList;
+
+    }
+    public static List<Integer> genNextArray(List<Integer> array){
+        int length = array.size();
+        List<Integer> newArray = new ArrayList<>();
+        newArray.add(array.get(0));
+        if(length!=1){
+            for(int i=0; i<length-1; i++){
+                newArray.add(array.get(i)+array.get(i+1));
+            }
+        }
+        newArray.add(array.get(length-1));
+        return newArray;
     }
 
 
